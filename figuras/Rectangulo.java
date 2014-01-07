@@ -1,5 +1,5 @@
 
-class Rectangulo{
+class Rectangulo extends FiguraBasica implements Operaciones, Dibujar{
 
 	public Rectangulo (int base, int altura){
 		super(base, altura);

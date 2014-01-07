@@ -1,51 +1,98 @@
+class Triangulo extends FiguraBasica implements Operaciones, Dibujar{
 
-
-class Triangulo{
-	public int base;
-	public int altura;
 
 	public Triangulo (int base, int altura){
-		this.base = base;
-		this.altura = altura;
-		this.dibuja1();
+		super(base, altura);
 	}
 
 
-	
-	public void dibuja1() {
+	public String mostrar(){
+		String triangulo = "";
 		String espacio = "  "; 
 		String asterisco = "X "; 
-		for (int i= 1; i<=5; i++){ 
-			for (int espacios = 5 - i; espacios >0; espacios--) 
-				System.out.print(espacio); 
-			for (int lineas = 1; lineas < 2 * i; lineas++) 
-				System.out.print(asterisco); 
-			System.out.println(""); 
+		for (int i= 1; i<=altura; i++){ 
+			for (int espacios = base - i; espacios >0; espacios--) 
+				triangulo = triangulo + espacio; 
+			for (int lineas = 1; lineas < 2 * i; lineas++) {
+				if (lineas == 1)
+					triangulo = triangulo + "X";
+				if(lineas == i * 2 - 1){
+					if (i * 2 - 1 > 1)
+						triangulo = triangulo + "X";
+				}
+				if (i == base && lineas < base -1)
+						triangulo = triangulo + " X";
+				else
+					triangulo = triangulo + "  ";
+			}
+			triangulo = triangulo + "\n"; 
 		} 
-		for (int i= 4; i>=1; i--){ 
-			for (int espacios = 5 - i; espacios >0; espacios--) 
-				System.out.print(espacio); 
-			for (int lineas = 1; lineas < 2 * i; lineas++) 
-				System.out.print(asterisco); 
-			System.out.println(""); 
-		}
+		return triangulo;
 	}
 
-	public void dibuja(){
-		for(int i = 0; i < altura; i++){
-			for(int j = 0; j < base ; j++){
-				if (i == 0)
-					System.out.print("X ");
-				else if (i == altura -1)
-					System.out.print("X ");
-				else if (j == 0)
-					System.out.print("X ");
-				else if (j == base -1)
-					System.out.print("X ");
+
+	public String gira() {
+		String gira = "";
+		String espacio = "  "; 
+		String asterisco = "X";
+		for (int i= altura; i>=1; i--){ 
+			for (int espacios = base - i; espacios >0; espacios--) 
+				gira = gira + espacio;
+			for (int lineas = 1; lineas < 2 * i; lineas++) {
+				if (lineas == 1)
+					gira = gira + asterisco;
+				if(lineas == i * 2 - 1){
+					if (i * 2 - 1 > 1)
+						gira = gira + asterisco;
+				}
+				if (i == base && lineas < base -1)
+						gira = gira + " X";
 				else
-					System.out.print("  ");
+					gira = gira + "  ";
+					
 			}
-			System.out.println();
+			gira = gira + "\n"; 
 		}
+		
+		return gira;
+		
+	}
+
+
+	public double area() {
+		return (base * altura)/2;
+	}
+
+
+
+	public String mover(int x, int y) {
+		String triangulo = "";
+		String espacio = "  "; 
+		String asterisco = "X "; 
+		for (int i = 0; i < y; i++)
+			triangulo = triangulo + "\n";
+		for (int i = 0; i < x; i++)
+			triangulo = triangulo + " ";
+
+		for (int i= 1; i<=altura; i++){ 
+			for (int espacios = base - i; espacios >0; espacios--) 
+				triangulo = triangulo + espacio; 
+			for (int lineas = 1; lineas < 2 * i; lineas++) {
+				if (lineas == 1)
+					triangulo = triangulo + "X";
+				if(lineas == i * 2 - 1){
+					if (i * 2 - 1 > 1)
+						triangulo = triangulo + "X";
+				}
+				if (i == base && lineas < base -1)
+						triangulo = triangulo + " X";
+				else
+					triangulo = triangulo + "  ";
+			}
+			triangulo = triangulo + "\n";
+			for (int k = 0; k < x; k++)
+				triangulo = triangulo + " ";
+		} 
+		return triangulo;
 	}
 }
