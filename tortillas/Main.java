@@ -1,6 +1,7 @@
+
 import java.util.Scanner;
 
-public class Main(){
+public class Main{
 
 	public static boolean isNumeric(String cadena){
 		try {
@@ -16,6 +17,8 @@ public class Main(){
 		Scanner entrada = new Scanner(System.in);
 		String tipoT;
 		String cantidad;
+		PrepararNormal normal;
+		PrepararTaco taco;
 		do{
 			System.out.println("¿Que tortilla quieres preparar?");
 			System.out.println("1.- Tortilla normal\n2.- Tortilla para taco");
@@ -26,11 +29,11 @@ public class Main(){
 			System.out.println("¿Que cantidad de tortillas deseas preparar?");
 			cantidad = entrada.next();
 		}while (!isNumeric(cantidad));
-		
+
 		if (Integer.parseInt(tipoT) == 1)
-			PrepararNormal normal = new PrepararNormal(Integer.parseInt(cantidad));
+			normal = new PrepararNormal(Integer.parseInt(cantidad));
 		else
-			PrepararTaco taco = new PrepararTaco(Integer.parseInt(cantidad));
+			 taco = new PrepararTaco(Integer.parseInt(cantidad));
 		entrada.close();
 	}
 }

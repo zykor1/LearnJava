@@ -1,5 +1,6 @@
+
 interface Maquina{
-	public void prepararTortilla();
-	private boolean verficarIngredientes() throws IngredienteNotFound;
-	private void actualizarIngredientes();
+	public void prepararTortilla(int cantidad);
+	boolean verficarIngredientes() throws IngredienteNotFound;
+	void actualizarIngredientes();
 }

@@ -1,3 +1,4 @@
+
 class PrepararNormal implements TortillaNormal, Maquina{
 	
 	Ingredientes ingredientes;
@@ -12,31 +13,34 @@ class PrepararNormal implements TortillaNormal, Maquina{
 	public PrepararNormal(int cantidad){
 		ingredientes = new Ingredientes();
 		ingredientesLeidos = ingredientes.leerIngredientes();
-		this.prepararTortilla(cantidad)
+		this.prepararTortilla(cantidad);
 	}	
 
 	public void prepararTortilla(int cantidad){
 		try{
 			for(int i = 0; i < cantidad; i++){
-				this.verficarIngredientes();
+				if(!this.verficarIngredientes())
+					System.out.println("Faltaron " + (i - cantidad) + " tortillas for elaborar");
 				this.actualizarIngredientes();
-				System.out.println("Tortilla " + i + " creada")
+				System.out.println("Tortilla " + (i + 1) +" creada");
 			}
 		}catch(IngredienteNotFound inf){
-			System.out.println("No hay suficientes ingredientes");
+			
+			System.out.println(inf.getMessage());
 		}
 	}
 
-	private boolean verficarIngredientes() throws IngredienteNotFound{
-		if(ingredientesLeidos[0] >= MASA)
+	public boolean verficarIngredientes() throws IngredienteNotFound{
+		if(ingredientesLeidos[0] < MASA)
 			throw new IngredienteNotFound("No hay suficiente masa");
-		if(ingredientesLeidos[1] >= AGUA)
+		if(ingredientesLeidos[1] < AGUA)
 			throw new IngredienteNotFound("No hay suficiente agua");
-		if(ingredientesLeidos[2] >= SAL)
+		if(ingredientesLeidos[2] < SAL)
 			throw new IngredienteNotFound("No hay suficiente sal");
+		return true;
 	}
 
-	private void actualizarIngredientes(){
+	public void actualizarIngredientes(){
 		ingredientesLeidos[0] = ingredientesLeidos[0] - MASA;
 		ingredientesLeidos[1] = ingredientesLeidos[1] - AGUA;
 		ingredientesLeidos[2] = ingredientesLeidos[2] - SAL;
