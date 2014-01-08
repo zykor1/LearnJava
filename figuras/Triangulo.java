@@ -11,7 +11,7 @@ class Triangulo extends FiguraBasica implements Operaciones, Dibujar{
 		String espacio = "  "; 
 		String asterisco = "X "; 
 		for (int i= 1; i<=altura; i++){ 
-			for (int espacios = base - i; espacios >0; espacios--) 
+			for (int espacios = altura - i; espacios >0; espacios--) 
 				triangulo = triangulo + espacio; 
 			for (int lineas = 1; lineas < 2 * i; lineas++) {
 				if (lineas == 1)
@@ -20,7 +20,7 @@ class Triangulo extends FiguraBasica implements Operaciones, Dibujar{
 					if (i * 2 - 1 > 1)
 						triangulo = triangulo + "X";
 				}
-				if (i == base && lineas < base -1)
+				if (i == altura && lineas < base -1)
 						triangulo = triangulo + " X";
 				else
 					triangulo = triangulo + "  ";
@@ -36,7 +36,7 @@ class Triangulo extends FiguraBasica implements Operaciones, Dibujar{
 		String espacio = "  "; 
 		String asterisco = "X";
 		for (int i= altura; i>=1; i--){ 
-			for (int espacios = base - i; espacios >0; espacios--) 
+			for (int espacios = altura - i; espacios >0; espacios--) 
 				gira = gira + espacio;
 			for (int lineas = 1; lineas < 2 * i; lineas++) {
 				if (lineas == 1)
@@ -45,7 +45,7 @@ class Triangulo extends FiguraBasica implements Operaciones, Dibujar{
 					if (i * 2 - 1 > 1)
 						gira = gira + asterisco;
 				}
-				if (i == base && lineas < base -1)
+				if (i == altura && lineas < base -1)
 						gira = gira + " X";
 				else
 					gira = gira + "  ";
@@ -75,7 +75,7 @@ class Triangulo extends FiguraBasica implements Operaciones, Dibujar{
 			triangulo = triangulo + " ";
 
 		for (int i= 1; i<=altura; i++){ 
-			for (int espacios = base - i; espacios >0; espacios--) 
+			for (int espacios = altura - i; espacios >0; espacios--) 
 				triangulo = triangulo + espacio; 
 			for (int lineas = 1; lineas < 2 * i; lineas++) {
 				if (lineas == 1)
@@ -84,7 +84,7 @@ class Triangulo extends FiguraBasica implements Operaciones, Dibujar{
 					if (i * 2 - 1 > 1)
 						triangulo = triangulo + "X";
 				}
-				if (i == base && lineas < base -1)
+				if (i == altura && lineas < base -1)
 						triangulo = triangulo + " X";
 				else
 					triangulo = triangulo + "  ";
